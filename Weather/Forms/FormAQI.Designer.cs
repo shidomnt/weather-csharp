@@ -89,6 +89,7 @@
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(417, 60);
@@ -100,6 +101,7 @@
             // 
             this.Label_TitleDescription.AutoSize = true;
             this.Label_TitleDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Label_TitleDescription.ForeColor = System.Drawing.Color.White;
             this.Label_TitleDescription.Location = new System.Drawing.Point(3, 60);
             this.Label_TitleDescription.Name = "Label_TitleDescription";
             this.Label_TitleDescription.Size = new System.Drawing.Size(417, 30);
@@ -126,10 +128,11 @@
             // 
             this.Label_AirQuality_Title.AutoSize = true;
             this.Label_AirQuality_Title.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Label_AirQuality_Title.Font = new System.Drawing.Font("Segoe UI", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Label_AirQuality_Title.Font = new System.Drawing.Font("Segoe UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Label_AirQuality_Title.ForeColor = System.Drawing.Color.White;
             this.Label_AirQuality_Title.Location = new System.Drawing.Point(3, 0);
             this.Label_AirQuality_Title.Name = "Label_AirQuality_Title";
-            this.Label_AirQuality_Title.Size = new System.Drawing.Size(48, 54);
+            this.Label_AirQuality_Title.Size = new System.Drawing.Size(50, 54);
             this.Label_AirQuality_Title.TabIndex = 0;
             this.Label_AirQuality_Title.Text = "0";
             this.Label_AirQuality_Title.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -139,11 +142,12 @@
             this.Label_AirQuality_Description.AutoSize = true;
             this.Label_AirQuality_Description.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label_AirQuality_Description.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Label_AirQuality_Description.Location = new System.Drawing.Point(57, 0);
+            this.Label_AirQuality_Description.ForeColor = System.Drawing.Color.White;
+            this.Label_AirQuality_Description.Location = new System.Drawing.Point(59, 0);
             this.Label_AirQuality_Description.Name = "Label_AirQuality_Description";
-            this.Label_AirQuality_Description.Size = new System.Drawing.Size(357, 54);
+            this.Label_AirQuality_Description.Size = new System.Drawing.Size(355, 54);
             this.Label_AirQuality_Description.TabIndex = 1;
-            this.Label_AirQuality_Description.Text = "Trong lành";
+            this.Label_AirQuality_Description.Text = "Chất lượng";
             this.Label_AirQuality_Description.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // tableLayoutPanel3
@@ -189,6 +193,7 @@
             this.label15.AutoSize = true;
             this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label15.ForeColor = System.Drawing.Color.White;
             this.label15.Location = new System.Drawing.Point(3, 25);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(60, 25);
@@ -201,6 +206,7 @@
             this.Label_Co_Value.AutoSize = true;
             this.Label_Co_Value.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label_Co_Value.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Label_Co_Value.ForeColor = System.Drawing.Color.White;
             this.Label_Co_Value.Location = new System.Drawing.Point(3, 0);
             this.Label_Co_Value.Name = "Label_Co_Value";
             this.Label_Co_Value.Size = new System.Drawing.Size(60, 25);
@@ -228,6 +234,7 @@
             this.label13.AutoSize = true;
             this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label13.ForeColor = System.Drawing.Color.White;
             this.label13.Location = new System.Drawing.Point(3, 25);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(57, 25);
@@ -240,6 +247,7 @@
             this.Label_O3_Value.AutoSize = true;
             this.Label_O3_Value.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label_O3_Value.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Label_O3_Value.ForeColor = System.Drawing.Color.White;
             this.Label_O3_Value.Location = new System.Drawing.Point(3, 0);
             this.Label_O3_Value.Name = "Label_O3_Value";
             this.Label_O3_Value.Size = new System.Drawing.Size(57, 25);
@@ -267,6 +275,7 @@
             this.label11.AutoSize = true;
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(3, 25);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(57, 25);
@@ -279,6 +288,7 @@
             this.Label_No2_Value.AutoSize = true;
             this.Label_No2_Value.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label_No2_Value.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Label_No2_Value.ForeColor = System.Drawing.Color.White;
             this.Label_No2_Value.Location = new System.Drawing.Point(3, 0);
             this.Label_No2_Value.Name = "Label_No2_Value";
             this.Label_No2_Value.Size = new System.Drawing.Size(57, 25);
@@ -306,6 +316,7 @@
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(3, 25);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(57, 25);
@@ -318,6 +329,7 @@
             this.Label_So2_Value.AutoSize = true;
             this.Label_So2_Value.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label_So2_Value.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Label_So2_Value.ForeColor = System.Drawing.Color.White;
             this.Label_So2_Value.Location = new System.Drawing.Point(3, 0);
             this.Label_So2_Value.Name = "Label_So2_Value";
             this.Label_So2_Value.Size = new System.Drawing.Size(57, 25);
@@ -345,6 +357,7 @@
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(3, 25);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(57, 25);
@@ -357,6 +370,7 @@
             this.Label_Pm10_Value.AutoSize = true;
             this.Label_Pm10_Value.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label_Pm10_Value.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Label_Pm10_Value.ForeColor = System.Drawing.Color.White;
             this.Label_Pm10_Value.Location = new System.Drawing.Point(3, 0);
             this.Label_Pm10_Value.Name = "Label_Pm10_Value";
             this.Label_Pm10_Value.Size = new System.Drawing.Size(57, 25);
@@ -384,6 +398,7 @@
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(3, 25);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(57, 25);
@@ -396,6 +411,7 @@
             this.Label_Pm25_Value.AutoSize = true;
             this.Label_Pm25_Value.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label_Pm25_Value.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Label_Pm25_Value.ForeColor = System.Drawing.Color.White;
             this.Label_Pm25_Value.Location = new System.Drawing.Point(3, 0);
             this.Label_Pm25_Value.Name = "Label_Pm25_Value";
             this.Label_Pm25_Value.Size = new System.Drawing.Size(57, 25);
@@ -407,8 +423,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(423, 212);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.ForeColor = System.Drawing.Color.White;
             this.Name = "FormAQI";
             this.Text = "Chất lượng không khí";
             this.tableLayoutPanel1.ResumeLayout(false);

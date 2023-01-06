@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System.Diagnostics;
 using Weather.Classes;
+using Weather.Classes.Serialization;
 using Weather.Constants;
+using Weather.Helpers;
 
 namespace Weather.Forms
 {
@@ -15,10 +17,10 @@ namespace Weather.Forms
 
         public WeatherController Controller { get; set; }
 
-        public FormWeather()
+        public FormWeather(WeatherController controller)
         {
             InitializeComponent();
-            Controller = new();
+            Controller = controller;
             WeatherChange += (sender, e) => LoadWeatherToForm();
 
         }
@@ -30,7 +32,7 @@ namespace Weather.Forms
 
         private async void Btn_ChangeLocation_Click(object sender, EventArgs e)
         {
-            var formCollectLocation = new FormCollectLocation();
+            var formCollectLocation = new FormChangeLocation();
             var dialogResult = formCollectLocation.ShowDialog(this);
             if (dialogResult != DialogResult.OK) return;
 
@@ -46,63 +48,6 @@ namespace Weather.Forms
             }
 
             await GetCurrentWeather(formCollectLocation.LocationName);
-        }
-        private void LoadWeatherToForm()
-        {
-            if (CurrentWeather is null || CurrentLocation is null) return;
-
-            Label_Location.Text = CurrentLocation.Name;
-            Label_Temperature.Text = CurrentWeather.TempC.ToString() + DonVi.TempC;
-
-            Label_WeatherCondition.Text = CurrentWeather.Condition.Text.ToString();
-
-            var str = System.Text.Encoding.UTF8.GetString(Properties.Resources.weather_conditions);
-
-            var weatherConditions = JsonConvert
-                .DeserializeObject<List<WeatherCondition>>(str);
-
-
-            if (weatherConditions is not null)
-            {
-                var iconNumber = weatherConditions
-                    .Where(weatherCondition => weatherCondition.Code == CurrentWeather.Condition.Code)
-                    .Select(weatherCondition => weatherCondition.Icon)
-                    .FirstOrDefault();
-
-                var iconName = $"{CurrentWeather.IsDay}{iconNumber}";
-
-                PicBox_WeatherCondition.Image = (System.Drawing.Bitmap)
-                    Properties.Resources.ResourceManager.GetObject(iconName, Properties.Resources.Culture)!;
-            }
-
-            var maxAirQualityDesc = FormAQI.CalculateAQI(CurrentWeather);
-
-            Label_AQI.Text = $"{maxAirQualityDesc.Emoji} AQI {maxAirQualityDesc.Value}";
-
-            Label_FeelLike_Value.Text = CurrentWeather.FeelslikeC.ToString() + DonVi.TempC;
-
-            Label_Precipitation_Amount_Value.Text = CurrentWeather.PrecipMm.ToString() + DonVi.Millimeter;
-
-            Label_Wind_Speed_Value.Text = CurrentWeather.WindKph.ToString() + DonVi.KmPerH;
-
-            Label_Humidity_Value.Text = CurrentWeather.Humidity.ToString() + DonVi.Percent;
-
-            Label_Pressure_Value.Text = CurrentWeather.PressureMb.ToString() + DonVi.MiliBar;
-
-            Label_UV_Value.Text = CurrentWeather.Uv.ToString();
-
-        }
-        private void Label_AQI_Click(object sender, EventArgs e)
-        {
-            if (CurrentLocation is null || CurrentWeather is null) return;
-            var formAQI = new FormAQI(CurrentLocation, CurrentWeather);
-            formAQI.ShowDialog();
-
-        }
-
-        public void OnWeatherChange()
-        {
-            WeatherChange?.Invoke(this, new EventArgs());
         }
 
         private async void Btn_Export_Click(object sender, EventArgs e)
@@ -124,7 +69,7 @@ namespace Weather.Forms
 
                 if (diaLogResult == DialogResult.OK && !string.IsNullOrWhiteSpace(saveFileDiaLog.FileName))
                 {
-                    var pathSaved = await Controller.ExportToExcel(
+                    var pathSaved = await Controller.ExportToExcelAsync(
                         CurrentWeather,
                         saveFileDiaLog.FileName
                         );
@@ -149,27 +94,113 @@ namespace Weather.Forms
             }
         }
 
-        private async Task GetCurrentWeather(string locationName)
+        private void Label_AQI_Click(object sender, EventArgs e)
+        {
+            if (CurrentLocation is null || CurrentWeather is null) return;
+            var formAQI = new FormAQI(CurrentLocation, CurrentWeather);
+            formAQI.ShowDialog();
+
+        }
+
+        private async void ApiSettingMenu_Click(object sender, EventArgs e)
+        {
+            var formGeneralSetting = new FormApiSetting();
+            var result = formGeneralSetting.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                var configuration = formGeneralSetting.Configuration;
+                await AppConfiguration.SetAsync(configuration);
+
+                result = MessageBox.Show(
+                    "Khởi động lại ứng dụng ngay ?",
+                    "Thông báo",
+                    MessageBoxButtons.OKCancel,
+                    MessageBoxIcon.Information);
+                if (result == DialogResult.OK)
+                {
+                    Program.Restart();
+                }
+            }
+        }
+        public async Task GetCurrentWeather(string locationName)
         {
             try
             {
-                var response = await Controller.GetCurrentWeather(locationName);
+                var response = await Controller.GetCurrentWeatherAsync(locationName);
                 if (response is not null)
                 {
                     ExtractResponse(response);
                 }
             }
-            catch (Exception ex)
+            catch (HttpRequestException ex)
             {
+                var message = ex.StatusCode switch
+                {
+                    System.Net.HttpStatusCode.Forbidden => "API Key hết hạn hoặc đã bị vô hiệu hóa.",
+                    System.Net.HttpStatusCode.BadRequest => "Không tìm thây thành phố.",
+                    System.Net.HttpStatusCode.Unauthorized => "API Key không được cung cấp.",
+                    _ => ex.Message,
+                };
                 MessageBox.Show(
-                    ex.Message,
+                    message,
                     ex.GetType().Name,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
         }
 
-        public void ExtractResponse(ResponseCurrentWeatherApi response)
+        public void LoadWeatherToForm()
+        {
+            if (CurrentWeather is null || CurrentLocation is null) return;
+
+            Label_Location.Text = CurrentLocation.Name;
+            Label_Temperature.Text = CurrentWeather.TempC.ToString() + Unit.TempC;
+
+            Label_WeatherCondition.Text = CurrentWeather.Condition.Text.ToString();
+
+            var str = System.Text.Encoding.UTF8.GetString(Properties.Resources.weather_conditions);
+
+            var weatherConditions = JsonConvert
+                .DeserializeObject<List<WeatherCondition>>(str);
+
+
+            if (weatherConditions is not null)
+            {
+                var iconNumber = weatherConditions
+                    .Where(weatherCondition => weatherCondition.Code == CurrentWeather.Condition.Code)
+                    .Select(weatherCondition => weatherCondition.Icon)
+                    .FirstOrDefault();
+
+                var iconName = $"{CurrentWeather.IsDay}{iconNumber}";
+
+                PicBox_WeatherCondition.Image = (System.Drawing.Bitmap)
+                    Properties.Resources.ResourceManager.GetObject(iconName, Properties.Resources.Culture)!;
+            }
+
+            var maxAirQualityDesc = AQIHelper.CalculateTotalAQI(CurrentWeather.AirQuality);
+
+            Label_AQI.Text = $"{maxAirQualityDesc.Emoji} AQI {maxAirQualityDesc.Value}";
+
+            Label_FeelLike_Value.Text = CurrentWeather.FeelslikeC.ToString() + Unit.TempC;
+
+            Label_Precipitation_Amount_Value.Text = CurrentWeather.PrecipMm.ToString() + Unit.Millimeter;
+
+            Label_Wind_Speed_Value.Text = CurrentWeather.WindKph.ToString() + Unit.KmPerH;
+
+            Label_Humidity_Value.Text = CurrentWeather.Humidity.ToString() + Unit.Percent;
+
+            Label_Pressure_Value.Text = CurrentWeather.PressureMb.ToString() + Unit.MiliBar;
+
+            Label_UV_Value.Text = CurrentWeather.Uv.ToString();
+
+        }
+
+        public void OnWeatherChange()
+        {
+            WeatherChange?.Invoke(this, new EventArgs());
+        }
+
+        private void ExtractResponse(ResponseCurrentWeatherApi response)
         {
             CurrentWeather = response.CurrentWeather;
             CurrentLocation = response.Location;

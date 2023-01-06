@@ -2,28 +2,33 @@
 using Newtonsoft.Json;
 using System.Web;
 using Weather.Classes;
+using Weather.Classes.Serialization;
 using Weather.Constants;
+using Weather.Exceptions;
 
 namespace Weather
 {
     internal class WeatherController
     {
 
-        public string? ApiKey { get; set; }
+        public string? ApiKey { get; }
+
+        public string BaseUrl { get; }
 
         public WeatherController()
         {
-            var apiKey = AppConfiguration.GetAPIKey("ApiKey:Default");
-            if (apiKey is null) throw new Exception("Khong tim thay api key trong appsettings.json");
+            var apiKey = AppConfiguration.GetAPIKey();
+            var baseUrl = AppConfiguration.GetBaseAPIUrl();
+            if (string.IsNullOrEmpty(apiKey)) throw new ApiKeyNotFoundException();
+            if (string.IsNullOrEmpty(baseUrl)) throw new BaseApiUrlNotFoundException();
             ApiKey = apiKey;
+            BaseUrl = baseUrl;
         }
 
         public async Task<ResponseCurrentWeatherApi?>
-            GetCurrentWeather(string queryName)
+            GetCurrentWeatherAsync(string queryName)
         {
-            //https://api.weatherapi.com/v1/current.json?key=&lang=&aqi=&q=
-
-            var builder = new UriBuilder("https://api.weatherapi.com");
+            var builder = new UriBuilder(BaseUrl);
             builder.Path = "v1/current.json";
             builder.Port = -1;
 
@@ -47,13 +52,12 @@ namespace Weather
         }
 
         public async Task<List<CurrentLocation>?>
-            GetLocations(string locationNameQuery)
+            GetLocationsAsync(string locationNameQuery)
         {
-            // https://api.weatherapi.com/v1/search.json?key=&q=
             var httpClient = new HttpClient();
 
             var builder = new UriBuilder
-                ("https://api.weatherapi.com");
+                (BaseUrl);
             builder.Port = -1;
             builder.Path = "v1/search.json";
 
@@ -70,10 +74,9 @@ namespace Weather
                     .DeserializeObject<List<CurrentLocation>>(response);
             return result;
 
-
         }
 
-        public async Task<string> ExportToExcel(CurrentWeather currentWeather, string path)
+        public async Task<string> ExportToExcelAsync(CurrentWeather currentWeather, string path)
         {
             IExcelExportEngine engine = new ExcelExportEngine();
             var list = new List<CurrentWeather>();

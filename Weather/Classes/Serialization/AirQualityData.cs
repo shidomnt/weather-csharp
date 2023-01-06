@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
+using Weather.Helpers;
 
-namespace Weather.Classes
+namespace Weather.Classes.Serialization
 {
     internal class AirQualityData
     {
@@ -22,7 +23,8 @@ namespace Weather.Classes
         public int GbDefraIndex { get; set; }
         public override string ToString()
         {
-            return Pm25.ToString();
+            return AQIHelper.CalculateTotalAQI(this).Value.ToString();
         }
+
     }
 }

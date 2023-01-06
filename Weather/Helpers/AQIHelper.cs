@@ -1,13 +1,35 @@
 ﻿using Newtonsoft.Json;
 using Weather.Classes;
+using Weather.Classes.Serialization;
 using Weather.Constants;
 
 namespace Weather.Helpers
 {
     internal static class AQIHelper
     {
+        public static AirQualityDescription CalculateTotalAQI(AirQualityData airQuality)
+        {
+            var pm25Desc = new AirQualityDescription(airQuality.Pm25, PollutantGas.Pm25);
+            var pm10Desc = new AirQualityDescription(airQuality.Pm10, PollutantGas.Pm10);
+            var so2Desc = new AirQualityDescription(airQuality.So2, PollutantGas.So2);
+            var no2Desc = new AirQualityDescription(airQuality.No2, PollutantGas.No2);
+            var coDesc = new AirQualityDescription(airQuality.Co, PollutantGas.Co);
+            var o3Desc = new AirQualityDescription(airQuality.O3, PollutantGas.O3);
+
+            var descriptions = new[]
+            {
+                pm25Desc, pm10Desc, so2Desc, no2Desc, coDesc, o3Desc
+            };
+
+            var maxDesc = descriptions.MaxBy(desc => desc.Value);
+
+            maxDesc ??= pm25Desc;
+
+            return maxDesc;
+        }
+
         //concentration: nong do μg/m3
-        public static int CalculateAirQuality(float concentration, PollutantGas pollutantGas)
+        public static int CalculateAQI(float concentration, PollutantGas pollutantGas)
         {
             var roundedConcentration = pollutantGas switch
             {

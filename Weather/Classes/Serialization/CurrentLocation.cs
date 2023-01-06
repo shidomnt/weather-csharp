@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
-
-namespace Weather.Classes
+namespace Weather.Classes.Serialization
 {
     //"name": "Hanoi",
     //"region": "",

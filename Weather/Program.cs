@@ -1,3 +1,6 @@
+using Weather.Classes;
+using Weather.Exceptions;
+
 namespace Weather.Forms
 {
     internal static class Program
@@ -14,7 +17,18 @@ namespace Weather.Forms
 
             try
             {
-                Application.Run(new FormWeather());
+                AppConfiguration.InitAsync().Wait();
+                var controller = new WeatherController();
+                var formWeather = new FormWeather(controller);
+                Application.Run(formWeather);
+            }
+            catch (ApiKeyNotFoundException)
+            {
+                AppConfiguration.Remove();
+            }
+            catch (BaseApiUrlNotFoundException)
+            {
+                AppConfiguration.Remove();
             }
             catch (Exception ex)
             {
@@ -23,8 +37,16 @@ namespace Weather.Forms
                         ex.GetType().Name,
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
+            }
+            finally
+            {
                 Application.Exit();
             }
+        }
+
+        public static void Restart()
+        {
+            Application.Restart();
         }
     }
 }

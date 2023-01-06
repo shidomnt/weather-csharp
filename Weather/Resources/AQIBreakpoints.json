@@ -8,15 +8,15 @@
     "Hazardous": null,
     "Hazardous2": null
   },
-  //"O3_1h": {
-  //  "Good": null,
-  //  "Moderate": null,
-  //  "UnhealthyForSensitiveGroup": "0.125 - 0.164",
-  //  "Unhealthy": "0.165 - 0.204",
-  //  "VeryUnhealthy": "0.205 - 0.404",
-  //  "Hazardous": "0.405 - 0.504",
-  //  "Hazardous2": "0.505 - 0.604"
-  //},
+  "O3_1h": {
+    "Good": null,
+    "Moderate": null,
+    "UnhealthyForSensitiveGroup": "0.125 - 0.164",
+    "Unhealthy": "0.165 - 0.204",
+    "VeryUnhealthy": "0.205 - 0.404",
+    "Hazardous": "0.405 - 0.504",
+    "Hazardous2": "0.505 - 0.604"
+  },
   "Pm25": {
     "Good": "0.0 - 12.0",
     "Moderate": "12.1 - 35.4",

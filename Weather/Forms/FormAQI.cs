@@ -1,5 +1,7 @@
 ﻿using Weather.Classes;
+using Weather.Classes.Serialization;
 using Weather.Constants;
+using Weather.Helpers;
 
 namespace Weather.Forms
 {
@@ -33,7 +35,7 @@ namespace Weather.Forms
             var coDesc = new AirQualityDescription(currentAirQuality.Co, PollutantGas.Co);
             var o3Desc = new AirQualityDescription(currentAirQuality.O3, PollutantGas.O3);
 
-            var maxDesc = CalculateAQI(currentWeather);
+            var maxDesc = AQIHelper.CalculateTotalAQI(currentWeather.AirQuality);
 
             AQIValue = maxDesc.Value;
 
@@ -69,28 +71,6 @@ namespace Weather.Forms
             Label_Co_Value.Text = coDesc.Value.ToString();
             Label_Co_Value.ForeColor = coDesc.Color;
 
-        }
-        public static AirQualityDescription CalculateAQI(CurrentWeather currentWeather)
-        {
-            var currentAirQuality = currentWeather.AirQuality;
-
-            var pm25Desc = new AirQualityDescription(currentAirQuality.Pm25, PollutantGas.Pm25);
-            var pm10Desc = new AirQualityDescription(currentAirQuality.Pm10, PollutantGas.Pm10);
-            var so2Desc = new AirQualityDescription(currentAirQuality.So2, PollutantGas.So2);
-            var no2Desc = new AirQualityDescription(currentAirQuality.No2, PollutantGas.No2);
-            var coDesc = new AirQualityDescription(currentAirQuality.Co, PollutantGas.Co);
-            var o3Desc = new AirQualityDescription(currentAirQuality.O3, PollutantGas.O3);
-
-            var descriptions = new[]
-            {
-                pm25Desc, pm10Desc, so2Desc, no2Desc, coDesc, o3Desc
-            };
-
-            var maxDesc = descriptions.MaxBy(desc => desc.Value);
-
-            maxDesc ??= pm25Desc;
-
-            return maxDesc;
         }
 
     }

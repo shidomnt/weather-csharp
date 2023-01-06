@@ -61,8 +61,11 @@
             this.xuấtExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thoátToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.càiĐặtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ApiSettingMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.ngônNgữToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thôngTinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.thôngTinToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -165,7 +168,7 @@
             this.Label_Temperature.Name = "Label_Temperature";
             this.Label_Temperature.Size = new System.Drawing.Size(350, 74);
             this.Label_Temperature.TabIndex = 0;
-            this.Label_Temperature.Text = "Temperature";
+            this.Label_Temperature.Text = "0°C";
             this.Label_Temperature.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Label_AQI
@@ -178,7 +181,7 @@
             this.Label_AQI.Name = "Label_AQI";
             this.Label_AQI.Size = new System.Drawing.Size(350, 37);
             this.Label_AQI.TabIndex = 2;
-            this.Label_AQI.Text = "AQI";
+            this.Label_AQI.Text = "AQI 0";
             this.Label_AQI.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Label_AQI.Click += new System.EventHandler(this.Label_AQI_Click);
             // 
@@ -234,6 +237,7 @@
             this.Label_UV.AutoSize = true;
             this.Label_UV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label_UV.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Label_UV.ForeColor = System.Drawing.Color.Gainsboro;
             this.Label_UV.Location = new System.Drawing.Point(3, 0);
             this.Label_UV.Name = "Label_UV";
             this.Label_UV.Size = new System.Drawing.Size(166, 30);
@@ -247,9 +251,9 @@
             this.Label_UV_Value.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Label_UV_Value.Location = new System.Drawing.Point(3, 30);
             this.Label_UV_Value.Name = "Label_UV_Value";
-            this.Label_UV_Value.Size = new System.Drawing.Size(31, 21);
+            this.Label_UV_Value.Size = new System.Drawing.Size(19, 21);
             this.Label_UV_Value.TabIndex = 1;
-            this.Label_UV_Value.Text = "UV";
+            this.Label_UV_Value.Text = "0";
             // 
             // tableLayoutPanel9
             // 
@@ -272,6 +276,7 @@
             this.Label_Wind_Speed.AutoSize = true;
             this.Label_Wind_Speed.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label_Wind_Speed.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Label_Wind_Speed.ForeColor = System.Drawing.Color.Gainsboro;
             this.Label_Wind_Speed.Location = new System.Drawing.Point(3, 0);
             this.Label_Wind_Speed.Name = "Label_Wind_Speed";
             this.Label_Wind_Speed.Size = new System.Drawing.Size(166, 30);
@@ -285,9 +290,9 @@
             this.Label_Wind_Speed_Value.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Label_Wind_Speed_Value.Location = new System.Drawing.Point(3, 30);
             this.Label_Wind_Speed_Value.Name = "Label_Wind_Speed_Value";
-            this.Label_Wind_Speed_Value.Size = new System.Drawing.Size(92, 21);
+            this.Label_Wind_Speed_Value.Size = new System.Drawing.Size(56, 21);
             this.Label_Wind_Speed_Value.TabIndex = 1;
-            this.Label_Wind_Speed_Value.Text = "Wind speed";
+            this.Label_Wind_Speed_Value.Text = "0km/h";
             // 
             // tableLayoutPanel8
             // 
@@ -310,6 +315,7 @@
             this.Label_Pressure.AutoSize = true;
             this.Label_Pressure.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label_Pressure.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Label_Pressure.ForeColor = System.Drawing.Color.Gainsboro;
             this.Label_Pressure.Location = new System.Drawing.Point(3, 0);
             this.Label_Pressure.Name = "Label_Pressure";
             this.Label_Pressure.Size = new System.Drawing.Size(166, 29);
@@ -323,9 +329,9 @@
             this.Label_Pressure_Value.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Label_Pressure_Value.Location = new System.Drawing.Point(3, 29);
             this.Label_Pressure_Value.Name = "Label_Pressure_Value";
-            this.Label_Pressure_Value.Size = new System.Drawing.Size(70, 21);
+            this.Label_Pressure_Value.Size = new System.Drawing.Size(56, 21);
             this.Label_Pressure_Value.TabIndex = 1;
-            this.Label_Pressure_Value.Text = "Pressure";
+            this.Label_Pressure_Value.Text = "0mbar";
             // 
             // tableLayoutPanel7
             // 
@@ -348,6 +354,7 @@
             this.Label_Precipitation_Amount.AutoSize = true;
             this.Label_Precipitation_Amount.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label_Precipitation_Amount.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Label_Precipitation_Amount.ForeColor = System.Drawing.Color.Gainsboro;
             this.Label_Precipitation_Amount.Location = new System.Drawing.Point(3, 0);
             this.Label_Precipitation_Amount.Name = "Label_Precipitation_Amount";
             this.Label_Precipitation_Amount.Size = new System.Drawing.Size(166, 29);
@@ -361,9 +368,9 @@
             this.Label_Precipitation_Amount_Value.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Label_Precipitation_Amount_Value.Location = new System.Drawing.Point(3, 29);
             this.Label_Precipitation_Amount_Value.Name = "Label_Precipitation_Amount_Value";
-            this.Label_Precipitation_Amount_Value.Size = new System.Drawing.Size(155, 21);
+            this.Label_Precipitation_Amount_Value.Size = new System.Drawing.Size(47, 21);
             this.Label_Precipitation_Amount_Value.TabIndex = 1;
-            this.Label_Precipitation_Amount_Value.Text = "Precipitation amount";
+            this.Label_Precipitation_Amount_Value.Text = "0mm";
             // 
             // tableLayoutPanel6
             // 
@@ -386,6 +393,7 @@
             this.Label_Humidity.AutoSize = true;
             this.Label_Humidity.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label_Humidity.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Label_Humidity.ForeColor = System.Drawing.Color.Gainsboro;
             this.Label_Humidity.Location = new System.Drawing.Point(3, 0);
             this.Label_Humidity.Name = "Label_Humidity";
             this.Label_Humidity.Size = new System.Drawing.Size(166, 29);
@@ -399,9 +407,9 @@
             this.Label_Humidity_Value.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Label_Humidity_Value.Location = new System.Drawing.Point(3, 29);
             this.Label_Humidity_Value.Name = "Label_Humidity_Value";
-            this.Label_Humidity_Value.Size = new System.Drawing.Size(74, 21);
+            this.Label_Humidity_Value.Size = new System.Drawing.Size(32, 21);
             this.Label_Humidity_Value.TabIndex = 1;
-            this.Label_Humidity_Value.Text = "Humidity";
+            this.Label_Humidity_Value.Text = "0%";
             // 
             // tableLayoutPanel5
             // 
@@ -424,6 +432,7 @@
             this.Label_FeelLike.AutoSize = true;
             this.Label_FeelLike.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label_FeelLike.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Label_FeelLike.ForeColor = System.Drawing.Color.Gainsboro;
             this.Label_FeelLike.Location = new System.Drawing.Point(3, 0);
             this.Label_FeelLike.Name = "Label_FeelLike";
             this.Label_FeelLike.Size = new System.Drawing.Size(166, 29);
@@ -437,9 +446,9 @@
             this.Label_FeelLike_Value.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Label_FeelLike_Value.Location = new System.Drawing.Point(3, 29);
             this.Label_FeelLike_Value.Name = "Label_FeelLike_Value";
-            this.Label_FeelLike_Value.Size = new System.Drawing.Size(66, 21);
+            this.Label_FeelLike_Value.Size = new System.Drawing.Size(35, 21);
             this.Label_FeelLike_Value.TabIndex = 1;
-            this.Label_FeelLike_Value.Text = "FeelLike";
+            this.Label_FeelLike_Value.Text = "0°C";
             // 
             // menuStrip1
             // 
@@ -459,6 +468,7 @@
             this.đổiVịTríToolStripMenuItem,
             this.xuấtExcelToolStripMenuItem,
             this.thoátToolStripMenuItem});
+            this.chứcNăngToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.chứcNăngToolStripMenuItem.Name = "chứcNăngToolStripMenuItem";
             this.chứcNăngToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
             this.chứcNăngToolStripMenuItem.Text = "Chức năng";
@@ -486,10 +496,26 @@
             // càiĐặtToolStripMenuItem
             // 
             this.càiĐặtToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.chungToolStripMenuItem,
+            this.ApiSettingMenu,
             this.ngônNgữToolStripMenuItem});
+            this.càiĐặtToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.càiĐặtToolStripMenuItem.Name = "càiĐặtToolStripMenuItem";
             this.càiĐặtToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.càiĐặtToolStripMenuItem.Text = "Cài đặt";
+            // 
+            // chungToolStripMenuItem
+            // 
+            this.chungToolStripMenuItem.Name = "chungToolStripMenuItem";
+            this.chungToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.chungToolStripMenuItem.Text = "Chung";
+            // 
+            // ApiSettingMenu
+            // 
+            this.ApiSettingMenu.Name = "ApiSettingMenu";
+            this.ApiSettingMenu.Size = new System.Drawing.Size(128, 22);
+            this.ApiSettingMenu.Text = "Api";
+            this.ApiSettingMenu.Click += new System.EventHandler(this.ApiSettingMenu_Click);
             // 
             // ngônNgữToolStripMenuItem
             // 
@@ -499,17 +525,28 @@
             // 
             // thôngTinToolStripMenuItem
             // 
+            this.thôngTinToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.thôngTinToolStripMenuItem1});
+            this.thôngTinToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.thôngTinToolStripMenuItem.Name = "thôngTinToolStripMenuItem";
-            this.thôngTinToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
-            this.thôngTinToolStripMenuItem.Text = "Thông tin";
+            this.thôngTinToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.thôngTinToolStripMenuItem.Text = "Trợ giúp";
+            // 
+            // thôngTinToolStripMenuItem1
+            // 
+            this.thôngTinToolStripMenuItem1.Name = "thôngTinToolStripMenuItem1";
+            this.thôngTinToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
+            this.thôngTinToolStripMenuItem1.Text = "Thông tin";
             // 
             // FormWeather
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(362, 530);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
+            this.ForeColor = System.Drawing.Color.White;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormWeather";
             this.Text = "Weather - HaTQ - CD200429 - UDPM1K12";
@@ -577,5 +614,8 @@
         private ToolStripMenuItem thôngTinToolStripMenuItem;
         private ToolStripMenuItem càiĐặtToolStripMenuItem;
         private ToolStripMenuItem ngônNgữToolStripMenuItem;
+        private ToolStripMenuItem ApiSettingMenu;
+        private ToolStripMenuItem chungToolStripMenuItem;
+        private ToolStripMenuItem thôngTinToolStripMenuItem1;
     }
 }

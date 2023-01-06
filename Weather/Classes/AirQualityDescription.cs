@@ -19,7 +19,7 @@ namespace Weather.Classes
         public AirQualityDescription(float concentration, PollutantGas gas)
         {
             Gas = gas;
-            Value = AQIHelper.CalculateAirQuality(concentration, gas);
+            Value = AQIHelper.CalculateAQI(concentration, gas);
             if (Value >= 0 && Value < 20)
             {
                 Quality = QualityType.Good;
@@ -58,10 +58,6 @@ namespace Weather.Classes
             }
         }
 
-        public override string ToString()
-        {
-            return Quality.ToString();
-        }
     }
 
 }
