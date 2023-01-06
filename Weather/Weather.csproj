@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Forms\u1oekyub.ohy~" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Infodinamica.Framework.Exportable" Version="2.0.1.18715" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />

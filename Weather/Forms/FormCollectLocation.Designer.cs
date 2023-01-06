@@ -83,7 +83,7 @@
             // 
             // TextBox_ThanhPho
             // 
-            this.TextBox_ThanhPho.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.TextBox_ThanhPho.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.TextBox_ThanhPho.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.TextBox_ThanhPho.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TextBox_ThanhPho.Location = new System.Drawing.Point(3, 90);
@@ -114,6 +114,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FormCollectLocation";
             this.Text = "Nhập thành phố";
+            this.Load += new System.EventHandler(this.FormCollectLocation_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);

@@ -10,23 +10,31 @@
             LocationName = string.Empty;
         }
 
-        private /*async*/ void TextBox_ThanhPho_TextChanged(object sender, EventArgs e)
+        private void FormCollectLocation_Load(object sender, EventArgs e)
+        {
+            TextBox_ThanhPho.AutoCompleteCustomSource = new();
+        }
+
+        private async void TextBox_ThanhPho_TextChanged(object sender, EventArgs e)
         {
             //if (sender is not TextBox textBox) { return; }
             //if (textBox.Text == string.Empty) { return; }
 
-            //var locations = await WeatherController.GetLocations(textBox.Text);
+            //if (textBox.Text.Length != 3) { return; }
+
+            //var controller = new WeatherController();
+
+            //var locations = await controller.GetLocations(textBox.Text);
             //if (locations is null) return;
             //var names = locations
             //    .Select(location => location.Name)
             //    .Distinct()
             //    .ToArray();
 
-            //var nameCollection = new AutoCompleteStringCollection();
+            //textBox.AutoCompleteCustomSource.Clear();
 
-            //nameCollection.AddRange(names);
+            //textBox.AutoCompleteCustomSource.AddRange(names);
 
-            //textBox.AutoCompleteCustomSource = nameCollection;
         }
 
         private void Btn_XacNhan_Click(object sender, EventArgs e)
@@ -42,5 +50,6 @@
                 Btn_XacNhan.PerformClick();
             }
         }
+
     }
 }

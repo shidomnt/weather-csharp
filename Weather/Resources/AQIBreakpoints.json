@@ -1,0 +1,74 @@
+{
+  "O3_8h": {
+    "Good": "0.000 - 0.054",
+    "Moderate": "0.055 - 0.070",
+    "UnhealthyForSensitiveGroup": "0.071 - 0.085",
+    "Unhealthy": "0.086 - 0.105",
+    "VeryUnhealthy": "0.106 - 0.2",
+    "Hazardous": null,
+    "Hazardous2": null
+  },
+  //"O3_1h": {
+  //  "Good": null,
+  //  "Moderate": null,
+  //  "UnhealthyForSensitiveGroup": "0.125 - 0.164",
+  //  "Unhealthy": "0.165 - 0.204",
+  //  "VeryUnhealthy": "0.205 - 0.404",
+  //  "Hazardous": "0.405 - 0.504",
+  //  "Hazardous2": "0.505 - 0.604"
+  //},
+  "Pm25": {
+    "Good": "0.0 - 12.0",
+    "Moderate": "12.1 - 35.4",
+    "UnhealthyForSensitiveGroup": "35.5 - 55.4",
+    "Unhealthy": "55.5 - 150.4",
+    "VeryUnhealthy": "150.5 - 250.4",
+    "Hazardous": "250.5 - 350.4",
+    "Hazardous2": "350.5 - 500.4"
+  },
+  "Pm10": {
+    "Good": "0 - 54",
+    "Moderate": "55 - 154",
+    "UnhealthyForSensitiveGroup": "155 - 254",
+    "Unhealthy": "255 - 354",
+    "VeryUnhealthy": "355 - 424",
+    "Hazardous": "425 - 504",
+    "Hazardous2": "505 - 604"
+  },
+  "Co": {
+    "Good": "0.0 - 4.4",
+    "Moderate": "4.5 - 9.4",
+    "UnhealthyForSensitiveGroup": "9.5 - 12.4",
+    "Unhealthy": "12.5 - 15.4",
+    "VeryUnhealthy": "15.5 - 30.4",
+    "Hazardous": "30.5 - 40.4",
+    "Hazardous2": "40.5 - 50.4"
+  },
+  "So2": {
+    "Good": "0 - 35",
+    "Moderate": "36 - 75",
+    "UnhealthyForSensitiveGroup": "76 - 185",
+    "Unhealthy": "186 - 304",
+    "VeryUnhealthy": "305 - 604",
+    "Hazardous": "605 - 804",
+    "Hazardous2": "805 - 1004"
+  },
+  "No2": {
+    "Good": "0 - 53",
+    "Moderate": "54 - 100",
+    "UnhealthyForSensitiveGroup": "101 - 360",
+    "Unhealthy": "361 - 649",
+    "VeryUnhealthy": "650 - 1249",
+    "Hazardous": "1250 - 1649",
+    "Hazardous2": "1650 - 2049"
+  },
+  "AQI": {
+    "Good": "0 - 50",
+    "Moderate": "51 - 100",
+    "UnhealthyForSensitiveGroup": "101 - 150",
+    "Unhealthy": "151 - 200",
+    "VeryUnhealthy": "201 - 300",
+    "Hazardous": "301 - 400",
+    "Hazardous2": "401 - 500"
+  }
+}

@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Diagnostics;
 using Weather.Classes;
+using Weather.Constants;
 
 namespace Weather.Forms
 {
@@ -8,52 +9,44 @@ namespace Weather.Forms
     {
         public CurrentWeather? CurrentWeather { get; set; }
 
-        public Location? CurrentLocation { get; set; }
+        public CurrentLocation? CurrentLocation { get; set; }
 
         public event EventHandler? WeatherChange;
 
         public WeatherController Controller { get; set; }
 
-        public void ExtractResponse(ResponseCurrentWeatherApi response)
-        {
-            CurrentWeather = response.CurrentWeather;
-            CurrentLocation = response.Location;
-            OnWeatherChange();
-        }
-
-        public void OnWeatherChange()
-        {
-            WeatherChange?.Invoke(this, new EventArgs());
-        }
-
         public FormWeather()
         {
             InitializeComponent();
-            WeatherChange += (sender, e) => LoadWeatherToForm();
             Controller = new();
+            WeatherChange += (sender, e) => LoadWeatherToForm();
 
         }
 
         private async void FormWeather_Load(object sender, EventArgs e)
         {
-            try
-            {
-                var response = await Controller.GetCurrentWeather("Vietnam");
-                if (response is not null)
-                {
-                    ExtractResponse(response);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(
-                    ex.Message,
-                    ex.GetType().Name,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            }
+            await GetCurrentWeather("hanoi");
         }
 
+        private async void Btn_ChangeLocation_Click(object sender, EventArgs e)
+        {
+            var formCollectLocation = new FormCollectLocation();
+            var dialogResult = formCollectLocation.ShowDialog(this);
+            if (dialogResult != DialogResult.OK) return;
+
+            if (formCollectLocation.LocationName == string.Empty)
+            {
+                MessageBox.Show(
+                    "Tên thành phố rỗng",
+                    "Thông báo",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                    );
+                return;
+            }
+
+            await GetCurrentWeather(formCollectLocation.LocationName);
+        }
         private void LoadWeatherToForm()
         {
             if (CurrentWeather is null || CurrentLocation is null) return;
@@ -82,8 +75,9 @@ namespace Weather.Forms
                     Properties.Resources.ResourceManager.GetObject(iconName, Properties.Resources.Culture)!;
             }
 
+            var maxAirQualityDesc = FormAQI.CalculateAQI(CurrentWeather);
 
-            Label_AQI.Text = "AQI " + CurrentWeather.AirQuality.Pm25.ToString();
+            Label_AQI.Text = $"{maxAirQualityDesc.Emoji} AQI {maxAirQualityDesc.Value}";
 
             Label_FeelLike_Value.Text = CurrentWeather.FeelslikeC.ToString() + DonVi.TempC;
 
@@ -98,31 +92,17 @@ namespace Weather.Forms
             Label_UV_Value.Text = CurrentWeather.Uv.ToString();
 
         }
-
-        private async void Btn_ChangeLocation_Click(object sender, EventArgs e)
+        private void Label_AQI_Click(object sender, EventArgs e)
         {
-            var formCollectLocation = new FormCollectLocation();
-            var dialogResult = formCollectLocation.ShowDialog(this);
-            if (dialogResult != DialogResult.OK) return;
+            if (CurrentLocation is null || CurrentWeather is null) return;
+            var formAQI = new FormAQI(CurrentLocation, CurrentWeather);
+            formAQI.ShowDialog();
 
-            try
-            {
-                if (formCollectLocation.LocationName == string.Empty)
-                    throw new Exception("Tên thành phố rỗng");
-                var response = await Controller.GetCurrentWeather(formCollectLocation.LocationName);
-                if (response is not null)
-                {
-                    ExtractResponse(response);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(
-                    ex.Message,
-                    ex.GetType().Name,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            }
+        }
+
+        public void OnWeatherChange()
+        {
+            WeatherChange?.Invoke(this, new EventArgs());
         }
 
         private async void Btn_Export_Click(object sender, EventArgs e)
@@ -135,14 +115,18 @@ namespace Weather.Forms
 
             try
             {
-                using var folderBrowser = new FolderBrowserDialog();
-                var diaLogResult = folderBrowser.ShowDialog(this);
-                if (diaLogResult == DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowser.SelectedPath))
+                using var saveFileDiaLog = new SaveFileDialog();
+                saveFileDiaLog.Filter = "Excel|*.xls";
+                saveFileDiaLog.Title = "Save an Excel File";
+                saveFileDiaLog.FileName =
+                    $"{CurrentLocation.Name}-{CurrentLocation.LocalTimeEpoch}.xls";
+                var diaLogResult = saveFileDiaLog.ShowDialog(this);
+
+                if (diaLogResult == DialogResult.OK && !string.IsNullOrWhiteSpace(saveFileDiaLog.FileName))
                 {
                     var pathSaved = await Controller.ExportToExcel(
                         CurrentWeather,
-                        CurrentLocation,
-                        folderBrowser.SelectedPath
+                        saveFileDiaLog.FileName
                         );
                     diaLogResult = MessageBox.Show(
                         "Xuất file Excel thành công! Bấm Ok để mở file ngay",
@@ -164,5 +148,33 @@ namespace Weather.Forms
                     MessageBoxIcon.Error);
             }
         }
+
+        private async Task GetCurrentWeather(string locationName)
+        {
+            try
+            {
+                var response = await Controller.GetCurrentWeather(locationName);
+                if (response is not null)
+                {
+                    ExtractResponse(response);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    ex.Message,
+                    ex.GetType().Name,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        public void ExtractResponse(ResponseCurrentWeatherApi response)
+        {
+            CurrentWeather = response.CurrentWeather;
+            CurrentLocation = response.Location;
+            OnWeatherChange();
+        }
+
     }
 }

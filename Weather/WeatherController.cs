@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System.Web;
 using Weather.Classes;
+using Weather.Constants;
 
 namespace Weather
 {
@@ -20,7 +21,7 @@ namespace Weather
         public async Task<ResponseCurrentWeatherApi?>
             GetCurrentWeather(string queryName)
         {
-            //var url = $"https://api.weatherapi.com/v1/current.json?key={ApiKey}&lang=vi&aqi=yes&q=hanoi";
+            //https://api.weatherapi.com/v1/current.json?key=&lang=&aqi=&q=
 
             var builder = new UriBuilder("https://api.weatherapi.com");
             builder.Path = "v1/current.json";
@@ -45,10 +46,10 @@ namespace Weather
 
         }
 
-        public async Task<List<Location>?>
+        public async Task<List<CurrentLocation>?>
             GetLocations(string locationNameQuery)
         {
-            // https://api.weatherapi.com/v1/search.json?key=aed204a3b40a4db9b2690016223012&q=lond
+            // https://api.weatherapi.com/v1/search.json?key=&q=
             var httpClient = new HttpClient();
 
             var builder = new UriBuilder
@@ -66,13 +67,13 @@ namespace Weather
 
             var response = await httpClient.GetStringAsync(url);
             var result = JsonConvert
-                    .DeserializeObject<List<Location>>(response);
+                    .DeserializeObject<List<CurrentLocation>>(response);
             return result;
 
 
         }
 
-        public async Task<string> ExportToExcel(CurrentWeather currentWeather, Location location, string pathToFolder)
+        public async Task<string> ExportToExcel(CurrentWeather currentWeather, string path)
         {
             IExcelExportEngine engine = new ExcelExportEngine();
             var list = new List<CurrentWeather>();
@@ -80,7 +81,6 @@ namespace Weather
             engine.SetFormat(ExcelVersion.XLS);
             engine.AddData(list);
             var stream = engine.Export();
-            var path = pathToFolder + $"\\{location.Name}-{location.LocalTimeEpoch}.xls";
             using var file = new FileStream(
                 path,
                 FileMode.Create,
@@ -88,15 +88,6 @@ namespace Weather
                 );
             await stream.CopyToAsync(file);
             return path;
-        }
-
-        enum Language
-        {
-            vi,
-            ja,
-            ru,
-            ko,
-            de
         }
     }
 }

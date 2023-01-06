@@ -406,6 +406,9 @@
   <data name="1395" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\day\1395.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="AQIBreakpoints" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AQIBreakpoints.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="weather_conditions" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\weather_conditions.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

@@ -8,7 +8,7 @@ namespace Weather.Classes
         [JsonProperty("condition")]
         public WeatherCondition Condition { get; set; } = null!;
         [JsonProperty("air_quality")]
-        public AirQuality AirQuality { get; set; } = null!;
+        public AirQualityData AirQuality { get; set; } = null!;
         [JsonProperty("last_updated_epoch")]
         public int LastUpdatedEpoch { get; set; }
         [JsonProperty("last_updated")]

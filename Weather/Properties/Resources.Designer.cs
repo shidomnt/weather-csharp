@@ -1023,6 +1023,16 @@ namespace Weather.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] AQIBreakpoints {
+            get {
+                object obj = ResourceManager.GetObject("AQIBreakpoints", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] weather_conditions {
             get {
                 object obj = ResourceManager.GetObject("weather_conditions", resourceCulture);
