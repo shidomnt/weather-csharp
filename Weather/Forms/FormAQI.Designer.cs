@@ -53,6 +53,7 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.Label_Pm25_Value = new System.Windows.Forms.Label();
+            this.Label_Advise = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -66,22 +67,25 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.Label_TitleDescription, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 3);
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel1.Controls.Add(this.label1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Label_TitleDescription, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.Label_Advise, 1, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowCount = 5;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(423, 212);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(451, 250);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
@@ -90,9 +94,9 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(25, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(417, 60);
+            this.label1.Size = new System.Drawing.Size(399, 60);
             this.label1.TabIndex = 0;
             this.label1.Text = "Chỉ số chất lượng không khí";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -102,9 +106,9 @@
             this.Label_TitleDescription.AutoSize = true;
             this.Label_TitleDescription.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label_TitleDescription.ForeColor = System.Drawing.Color.White;
-            this.Label_TitleDescription.Location = new System.Drawing.Point(3, 60);
+            this.Label_TitleDescription.Location = new System.Drawing.Point(25, 60);
             this.Label_TitleDescription.Name = "Label_TitleDescription";
-            this.Label_TitleDescription.Size = new System.Drawing.Size(417, 30);
+            this.Label_TitleDescription.Size = new System.Drawing.Size(399, 30);
             this.Label_TitleDescription.TabIndex = 1;
             this.Label_TitleDescription.Text = "LocationName lúc x giờ";
             this.Label_TitleDescription.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -117,11 +121,11 @@
             this.tableLayoutPanel2.Controls.Add(this.Label_AirQuality_Title, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.Label_AirQuality_Description, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 93);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(25, 93);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(417, 54);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(399, 54);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // Label_AirQuality_Title
@@ -145,7 +149,7 @@
             this.Label_AirQuality_Description.ForeColor = System.Drawing.Color.White;
             this.Label_AirQuality_Description.Location = new System.Drawing.Point(59, 0);
             this.Label_AirQuality_Description.Name = "Label_AirQuality_Description";
-            this.Label_AirQuality_Description.Size = new System.Drawing.Size(355, 54);
+            this.Label_AirQuality_Description.Size = new System.Drawing.Size(337, 54);
             this.Label_AirQuality_Description.TabIndex = 1;
             this.Label_AirQuality_Description.Text = "Chất lượng";
             this.Label_AirQuality_Description.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -166,11 +170,11 @@
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 153);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(25, 203);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(417, 56);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(399, 44);
             this.tableLayoutPanel3.TabIndex = 3;
             // 
             // tableLayoutPanel9
@@ -180,12 +184,12 @@
             this.tableLayoutPanel9.Controls.Add(this.label15, 0, 1);
             this.tableLayoutPanel9.Controls.Add(this.Label_Co_Value, 0, 0);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(348, 3);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(333, 3);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 2;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(66, 50);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(63, 38);
             this.tableLayoutPanel9.TabIndex = 5;
             // 
             // label15
@@ -194,9 +198,9 @@
             this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(3, 25);
+            this.label15.Location = new System.Drawing.Point(3, 19);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(60, 25);
+            this.label15.Size = new System.Drawing.Size(57, 19);
             this.label15.TabIndex = 0;
             this.label15.Text = "CO";
             this.label15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -209,7 +213,7 @@
             this.Label_Co_Value.ForeColor = System.Drawing.Color.White;
             this.Label_Co_Value.Location = new System.Drawing.Point(3, 0);
             this.Label_Co_Value.Name = "Label_Co_Value";
-            this.Label_Co_Value.Size = new System.Drawing.Size(60, 25);
+            this.Label_Co_Value.Size = new System.Drawing.Size(57, 19);
             this.Label_Co_Value.TabIndex = 1;
             this.Label_Co_Value.Text = "0";
             this.Label_Co_Value.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -221,12 +225,12 @@
             this.tableLayoutPanel8.Controls.Add(this.label13, 0, 1);
             this.tableLayoutPanel8.Controls.Add(this.Label_O3_Value, 0, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(279, 3);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(267, 3);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 2;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(63, 50);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(60, 38);
             this.tableLayoutPanel8.TabIndex = 4;
             // 
             // label13
@@ -235,9 +239,9 @@
             this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(3, 25);
+            this.label13.Location = new System.Drawing.Point(3, 19);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(57, 25);
+            this.label13.Size = new System.Drawing.Size(54, 19);
             this.label13.TabIndex = 0;
             this.label13.Text = "O₃";
             this.label13.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -250,7 +254,7 @@
             this.Label_O3_Value.ForeColor = System.Drawing.Color.White;
             this.Label_O3_Value.Location = new System.Drawing.Point(3, 0);
             this.Label_O3_Value.Name = "Label_O3_Value";
-            this.Label_O3_Value.Size = new System.Drawing.Size(57, 25);
+            this.Label_O3_Value.Size = new System.Drawing.Size(54, 19);
             this.Label_O3_Value.TabIndex = 1;
             this.Label_O3_Value.Text = "0";
             this.Label_O3_Value.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -262,12 +266,12 @@
             this.tableLayoutPanel7.Controls.Add(this.label11, 0, 1);
             this.tableLayoutPanel7.Controls.Add(this.Label_No2_Value, 0, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(210, 3);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(201, 3);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 2;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(63, 50);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(60, 38);
             this.tableLayoutPanel7.TabIndex = 3;
             // 
             // label11
@@ -276,9 +280,9 @@
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(3, 25);
+            this.label11.Location = new System.Drawing.Point(3, 19);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(57, 25);
+            this.label11.Size = new System.Drawing.Size(54, 19);
             this.label11.TabIndex = 0;
             this.label11.Text = "NO₂";
             this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -291,7 +295,7 @@
             this.Label_No2_Value.ForeColor = System.Drawing.Color.White;
             this.Label_No2_Value.Location = new System.Drawing.Point(3, 0);
             this.Label_No2_Value.Name = "Label_No2_Value";
-            this.Label_No2_Value.Size = new System.Drawing.Size(57, 25);
+            this.Label_No2_Value.Size = new System.Drawing.Size(54, 19);
             this.Label_No2_Value.TabIndex = 1;
             this.Label_No2_Value.Text = "0";
             this.Label_No2_Value.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -303,12 +307,12 @@
             this.tableLayoutPanel6.Controls.Add(this.label9, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.Label_So2_Value, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(141, 3);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(135, 3);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(63, 50);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(60, 38);
             this.tableLayoutPanel6.TabIndex = 2;
             // 
             // label9
@@ -317,9 +321,9 @@
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(3, 25);
+            this.label9.Location = new System.Drawing.Point(3, 19);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(57, 25);
+            this.label9.Size = new System.Drawing.Size(54, 19);
             this.label9.TabIndex = 0;
             this.label9.Text = "SO₂";
             this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -332,7 +336,7 @@
             this.Label_So2_Value.ForeColor = System.Drawing.Color.White;
             this.Label_So2_Value.Location = new System.Drawing.Point(3, 0);
             this.Label_So2_Value.Name = "Label_So2_Value";
-            this.Label_So2_Value.Size = new System.Drawing.Size(57, 25);
+            this.Label_So2_Value.Size = new System.Drawing.Size(54, 19);
             this.Label_So2_Value.TabIndex = 1;
             this.Label_So2_Value.Text = "0";
             this.Label_So2_Value.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -344,12 +348,12 @@
             this.tableLayoutPanel5.Controls.Add(this.label7, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.Label_Pm10_Value, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(72, 3);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(69, 3);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(63, 50);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(60, 38);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
             // label7
@@ -358,9 +362,9 @@
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(3, 25);
+            this.label7.Location = new System.Drawing.Point(3, 19);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 25);
+            this.label7.Size = new System.Drawing.Size(54, 19);
             this.label7.TabIndex = 0;
             this.label7.Text = "PM10";
             this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -373,7 +377,7 @@
             this.Label_Pm10_Value.ForeColor = System.Drawing.Color.White;
             this.Label_Pm10_Value.Location = new System.Drawing.Point(3, 0);
             this.Label_Pm10_Value.Name = "Label_Pm10_Value";
-            this.Label_Pm10_Value.Size = new System.Drawing.Size(57, 25);
+            this.Label_Pm10_Value.Size = new System.Drawing.Size(54, 19);
             this.Label_Pm10_Value.TabIndex = 1;
             this.Label_Pm10_Value.Text = "0";
             this.Label_Pm10_Value.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -390,7 +394,7 @@
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(63, 50);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(60, 38);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // label5
@@ -399,9 +403,9 @@
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(3, 25);
+            this.label5.Location = new System.Drawing.Point(3, 19);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 25);
+            this.label5.Size = new System.Drawing.Size(54, 19);
             this.label5.TabIndex = 0;
             this.label5.Text = "PM2.5";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -414,17 +418,28 @@
             this.Label_Pm25_Value.ForeColor = System.Drawing.Color.White;
             this.Label_Pm25_Value.Location = new System.Drawing.Point(3, 0);
             this.Label_Pm25_Value.Name = "Label_Pm25_Value";
-            this.Label_Pm25_Value.Size = new System.Drawing.Size(57, 25);
+            this.Label_Pm25_Value.Size = new System.Drawing.Size(54, 19);
             this.Label_Pm25_Value.TabIndex = 1;
             this.Label_Pm25_Value.Text = "0";
             this.Label_Pm25_Value.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // Label_Advise
+            // 
+            this.Label_Advise.AutoSize = true;
+            this.Label_Advise.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Label_Advise.Location = new System.Drawing.Point(25, 150);
+            this.Label_Advise.Name = "Label_Advise";
+            this.Label_Advise.Size = new System.Drawing.Size(399, 50);
+            this.Label_Advise.TabIndex = 4;
+            this.Label_Advise.Text = "Lời khuyên";
+            this.Label_Advise.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FormAQI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(423, 212);
+            this.ClientSize = new System.Drawing.Size(451, 250);
             this.Controls.Add(this.tableLayoutPanel1);
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "FormAQI";
@@ -477,5 +492,6 @@
         private TableLayoutPanel tableLayoutPanel4;
         private Label label5;
         private Label Label_Pm25_Value;
+        private Label Label_Advise;
     }
 }

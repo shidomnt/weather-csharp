@@ -53,6 +53,8 @@ namespace Weather.Forms
             };
             Label_AirQuality_Description.ForeColor = maxDesc.Color;
 
+            Label_Advise.Text = maxDesc.Advise;
+
             Label_Pm10_Value.Text = pm10Desc.Value.ToString();
             Label_Pm10_Value.ForeColor = pm10Desc.Color;
 
