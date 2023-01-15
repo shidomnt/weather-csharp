@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using Weather.Classes;
 using Weather.Classes.Serialization;
+using Weather.Classes.Serialization.WeatherVisualCrossing;
 using Weather.Constants;
 using Weather.Helpers;
 
@@ -12,6 +13,8 @@ namespace Weather.Forms
         public CurrentWeather? CurrentWeather { get; set; }
 
         public CurrentLocation? CurrentLocation { get; set; }
+
+        public WeatherVisualCrossingInfo? VisualCrossing { get; set; }
 
         public event EventHandler? WeatherChange;
 
@@ -122,6 +125,7 @@ namespace Weather.Forms
                 }
             }
         }
+
         public async Task GetCurrentWeather(string locationName)
         {
             try
@@ -151,10 +155,10 @@ namespace Weather.Forms
 
         public void LoadWeatherToForm()
         {
-            if (CurrentWeather is null || CurrentLocation is null) return;
+            if (CurrentWeather is null || CurrentLocation is null || VisualCrossing is null) return;
 
-            Label_Location.Text = CurrentLocation.Name;
-            Label_Temperature.Text = CurrentWeather.TempC.ToString() + Unit.TempC;
+            Label_Location.Text = string.Join(',', VisualCrossing.ResolvedAddress.Split(",").Take(2));
+            Label_Temperature.Text = VisualCrossing.CurrentCondition.Temp.ToString() + Unit.TempC;
 
             Label_WeatherCondition.Text = CurrentWeather.Condition.Text.ToString();
 
@@ -162,7 +166,6 @@ namespace Weather.Forms
 
             var weatherConditions = JsonConvert
                 .DeserializeObject<List<WeatherCondition>>(str);
-
 
             if (weatherConditions is not null)
             {
@@ -181,17 +184,29 @@ namespace Weather.Forms
 
             Label_AQI.Text = $"{maxAirQualityDesc.Emoji} AQI {maxAirQualityDesc.Value}";
 
-            Label_FeelLike_Value.Text = CurrentWeather.FeelslikeC.ToString() + Unit.TempC;
+            var feelsLike = VisualCrossing.CurrentCondition.Feelslike ?? CurrentWeather.FeelslikeC;
 
-            Label_Precipitation_Amount_Value.Text = CurrentWeather.PrecipMm.ToString() + Unit.Millimeter;
+            var percip = CurrentWeather.PrecipMm;
 
-            Label_Wind_Speed_Value.Text = CurrentWeather.WindKph.ToString() + Unit.KmPerH;
+            var windSpeed = VisualCrossing.CurrentCondition.Windspeed ?? CurrentWeather.WindKph;
 
-            Label_Humidity_Value.Text = CurrentWeather.Humidity.ToString() + Unit.Percent;
+            var humidity = VisualCrossing.CurrentCondition.Humidity ?? CurrentWeather.Humidity;
 
-            Label_Pressure_Value.Text = CurrentWeather.PressureMb.ToString() + Unit.MiliBar;
+            var pressure = VisualCrossing.CurrentCondition.Pressure ?? CurrentWeather.PressureMb;
 
-            Label_UV_Value.Text = CurrentWeather.Uv.ToString();
+            var uv = VisualCrossing.CurrentCondition.Uvindex ?? CurrentWeather.Uv;
+
+            Label_FeelLike_Value.Text = feelsLike.ToString() + Unit.TempC;
+
+            Label_Precipitation_Amount_Value.Text = percip.ToString() + Unit.Millimeter;
+
+            Label_Wind_Speed_Value.Text = windSpeed.ToString() + Unit.KmPerH;
+
+            Label_Humidity_Value.Text = humidity.ToString() + Unit.Percent;
+
+            Label_Pressure_Value.Text = pressure.ToString() + Unit.MiliBar;
+
+            Label_UV_Value.Text = uv.ToString();
 
         }
 
@@ -204,6 +219,7 @@ namespace Weather.Forms
         {
             CurrentWeather = response.CurrentWeather;
             CurrentLocation = response.Location;
+            VisualCrossing = response.VisualCrossing;
             OnWeatherChange();
         }
 

@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System.Web;
 using Weather.Classes;
 using Weather.Classes.Serialization;
+using Weather.Classes.Serialization.WeatherVisualCrossing;
 using Weather.Constants;
 using Weather.Exceptions;
 
@@ -38,6 +39,13 @@ namespace Weather
             query["aqi"] = "yes";
             query["q"] = queryName;
 
+            var currentVisualCrossing = await GetCurrentWeatherVisualCrossingAsync(queryName);
+
+            if (currentVisualCrossing is not null)
+            {
+                query["q"] = $"{currentVisualCrossing.Latitude},{currentVisualCrossing.Longitude}";
+            }
+
             builder.Query = query.ToString();
 
             var url = builder.ToString();
@@ -45,8 +53,39 @@ namespace Weather
             var httpClient = new HttpClient();
 
             var responseBody = await httpClient.GetStringAsync(url);
+
             var result = JsonConvert
                 .DeserializeObject<ResponseCurrentWeatherApi>(responseBody);
+
+
+            if (result is not null)
+                result.VisualCrossing = currentVisualCrossing;
+
+            return result;
+
+        }
+
+        public async Task<ResponseWeatherVisualCrossing?>
+            GetCurrentWeatherVisualCrossingAsync(string name)
+        {
+            var builder = new UriBuilder("https://weather.visualcrossing.com/");
+            builder.Path = $"VisualCrossingWebServices/rest/services/timeline/{name}/today";
+            builder.Port = -1;
+
+            var query = HttpUtility.ParseQueryString(builder.Query);
+            query["key"] = "RS45MUK6NYERNTN7C5MAQMC5Z";
+            query["unitGroup"] = "metric";
+            query["include"] = "current";
+            query["contentType"] = "json";
+
+            builder.Query = query.ToString();
+            var url = builder.ToString();
+            var httpClient = new HttpClient();
+
+            var responseBody = await httpClient.GetStringAsync(url);
+            var result = JsonConvert
+                .DeserializeObject<ResponseWeatherVisualCrossing>(responseBody);
+
             return result;
 
         }

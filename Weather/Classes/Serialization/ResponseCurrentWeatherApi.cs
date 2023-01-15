@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using Weather.Classes.Serialization.WeatherVisualCrossing;
+
 namespace Weather.Classes.Serialization
 {
     internal class ResponseCurrentWeatherApi
@@ -8,5 +10,9 @@ namespace Weather.Classes.Serialization
 
         [JsonProperty("current")]
         public CurrentWeather CurrentWeather { get; set; } = null!;
+
+        [JsonIgnore]
+        public WeatherVisualCrossingInfo? VisualCrossing { get; set; }
+
     }
 }
